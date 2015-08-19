@@ -12,7 +12,7 @@ public class Config {
     private Main plugin;
     private com.j0ach1mmall3.freeautomessage.api.internal.storage.yaml.Config customConfig;
     private FileConfiguration config;
-    public static Boolean updateChecker;
+    public static boolean updateChecker;
     public static int loggingLevel;
     public static String noPermissionMessage;
     public Config(Main plugin) {

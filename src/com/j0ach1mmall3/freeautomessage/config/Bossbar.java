@@ -18,17 +18,17 @@ import java.util.List;
  */
 public class Bossbar {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
-    public static Boolean enabled;
-    private static List<BossbarBroadcaster> broadcasters;
+    private Config customConfig;
+    private FileConfiguration config;
+    public boolean enabled;
+    private List<BossbarBroadcaster> broadcasters;
     public Bossbar(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("bossbar.yml", plugin);
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
-        if(enabled && !Main.BossBarAPI){
+        if(enabled && !plugin.getBossBarAPI()){
             if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
@@ -45,7 +45,7 @@ public class Bossbar {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Bossbar config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<BossbarBroadcaster> getBroadcasters() {
+    private List<BossbarBroadcaster> getBroadcasters() {
         List<BossbarBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("BossbarBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -53,7 +53,7 @@ public class Bossbar {
         return broadcasters;
     }
 
-    private static BossbarBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private BossbarBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "BossbarBroadcasters." + identifier + ".";
         return new BossbarBroadcaster(
                 identifier,

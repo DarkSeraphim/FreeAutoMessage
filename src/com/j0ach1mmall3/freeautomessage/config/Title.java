@@ -16,17 +16,17 @@ import java.util.List;
  */
 public class Title {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
-    private static Boolean enabled;
-    private static List<TitleBroadcaster> broadcasters;
+    private Config customConfig;
+    private FileConfiguration config;
+    private boolean enabled;
+    private List<TitleBroadcaster> broadcasters;
     public Title(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("title.yml", plugin);
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
-        if(enabled && !Main.verBiggerThan(1, 8)){
+        if(enabled && !plugin.verBiggerThan(1, 8)){
             if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Title Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
@@ -40,7 +40,7 @@ public class Title {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Title config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<TitleBroadcaster> getBroadcasters() {
+    private List<TitleBroadcaster> getBroadcasters() {
         List<TitleBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("TitleBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -48,7 +48,7 @@ public class Title {
         return broadcasters;
     }
 
-    private static TitleBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private TitleBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "TitleBroadcasters." + identifier + ".";
         return new TitleBroadcaster(
                 identifier,

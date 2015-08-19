@@ -16,11 +16,11 @@ import java.util.List;
  * Created by j0ach1mmall3 on 2:58 19/08/2015 using IntelliJ IDEA.
  */
 public class Signs {
-    private static Main plugin;
+    private Main plugin;
     private static Config customConfig;
     private static FileConfiguration config;
-    private static Boolean enabled;
-    private static List<SignsBroadcaster> broadcasters;
+    private boolean enabled;
+    private List<SignsBroadcaster> broadcasters;
     public Signs(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("signs.yml", plugin);
@@ -37,7 +37,7 @@ public class Signs {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Signs config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<SignsBroadcaster> getBroadcasters() {
+    private List<SignsBroadcaster> getBroadcasters() {
         List<SignsBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("SignsBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -45,7 +45,7 @@ public class Signs {
         return broadcasters;
     }
 
-    private static SignsBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private SignsBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "SignsBroadcasters." + identifier + ".";
         return new SignsBroadcaster(
                 identifier,
@@ -56,7 +56,7 @@ public class Signs {
         );
     }
 
-    public static Boolean isSignsBroadcaster(String identifier) {
+    public static boolean isSignsBroadcaster(String identifier) {
         return customConfig.getKeys("SignsBroadcasters").contains(identifier);
     }
 
@@ -76,7 +76,7 @@ public class Signs {
         customConfig.saveConfig(config);
     }
 
-    public static Boolean hasSign(String identifier, Location l) {
+    public static boolean hasSign(String identifier, Location l) {
         String path = "SignsBroadcasters." + identifier + ".";
         List<String> signs = config.getStringList(path + "Signs");
         return signs.contains(serializeLocation(l));

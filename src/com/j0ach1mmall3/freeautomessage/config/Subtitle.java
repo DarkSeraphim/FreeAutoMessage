@@ -16,17 +16,17 @@ import java.util.List;
  */
 public class Subtitle {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
-    private static Boolean enabled;
-    private static List<SubtitleBroadcaster> broadcasters;
+    private Config customConfig;
+    private FileConfiguration config;
+    private boolean enabled;
+    private List<SubtitleBroadcaster> broadcasters;
     public Subtitle(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("subtitle.yml", plugin);
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
-        if(enabled && !Main.verBiggerThan(1, 8)){
+        if(enabled && !plugin.verBiggerThan(1, 8)){
             if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Subtitle Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
@@ -40,7 +40,7 @@ public class Subtitle {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Subtitle config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<SubtitleBroadcaster> getBroadcasters() {
+    private List<SubtitleBroadcaster> getBroadcasters() {
         List<SubtitleBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("SubtitleBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -48,7 +48,7 @@ public class Subtitle {
         return broadcasters;
     }
 
-    private static SubtitleBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private SubtitleBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "SubtitleBroadcasters." + identifier + ".";
         return new SubtitleBroadcaster(
                 identifier,

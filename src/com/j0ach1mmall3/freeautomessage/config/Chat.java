@@ -16,11 +16,11 @@ import java.util.List;
  */
 public class Chat {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
-    private static Boolean enabled;
-    public static Boolean json;
-    private static List<ChatBroadcaster> broadcasters;
+    private Config customConfig;
+    private FileConfiguration config;
+    private boolean enabled;
+    public static boolean json;
+    private List<ChatBroadcaster> broadcasters;
     public Chat(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("chat.yml", plugin);
@@ -28,7 +28,7 @@ public class Chat {
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
         json = config.getBoolean("Json");
-        if(enabled && !Main.verBiggerThan(1, 7)){
+        if(enabled && !plugin.verBiggerThan(1, 7)){
             if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Json Chat formatting is enabled in the config, however the server is running 1.6 or lower! Fixing that for you :)", ChatColor.RED);
             json = false;
         }
@@ -42,7 +42,7 @@ public class Chat {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Chat config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<ChatBroadcaster> getBroadcasters() {
+    private List<ChatBroadcaster> getBroadcasters() {
         List<ChatBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("ChatBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -50,7 +50,7 @@ public class Chat {
         return broadcasters;
     }
 
-    private static ChatBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private ChatBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "ChatBroadcasters." + identifier + ".";
         return new ChatBroadcaster(
                 identifier,

@@ -1,8 +1,9 @@
 package com.j0ach1mmall3.freeautomessage.api.internal.objects;
 
-import com.j0ach1mmall3.freeautomessage.Main;
 import com.j0ach1mmall3.freeautomessage.api.internal.api.ReflectionAPI;
+import com.j0ach1mmall3.freeautomessage.api.internal.methods.Parsing;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Constructor;
@@ -53,10 +54,14 @@ public class JsonText {
     }
 
     private Class getSerializerClass() {
-        if(Main.verBiggerThan(1, 8) && Main.verBiggerThan(2, 3)) {
+        if(verBiggerThan(1, 8) && verBiggerThan(2, 3)) {
             return ReflectionAPI.getNmsClass("IChatBaseComponent$ChatSerializer");
         } else {
             return ReflectionAPI.getNmsClass("ChatSerializer");
         }
+    }
+
+    public boolean verBiggerThan(int depth, int version) {
+        return Parsing.parseString(Bukkit.getBukkitVersion().split("\\-")[0].split("\\.")[depth]) >= version;
     }
 }

@@ -53,7 +53,7 @@ public class GUI {
         p.openInventory(gui);
     }
 
-    public Boolean hasClicked(InventoryClickEvent e) {
+    public boolean hasClicked(InventoryClickEvent e) {
         if(e.getView().getTopInventory() != null){
             if(e.getView().getTopInventory().getName().equalsIgnoreCase(PlaceholderAPI.setPlaceholders((Player) e.getWhoClicked(), name))){
                 if(e.getCurrentItem() != null){

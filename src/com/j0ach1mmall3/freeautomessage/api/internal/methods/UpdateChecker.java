@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class UpdateChecker {
-	public static Boolean checkUpdate(int resourceID, String currentVersion){
+	public static boolean checkUpdate(int resourceID, String currentVersion){
 		try {
             HttpURLConnection con = (HttpURLConnection) new URL("http://www.spigotmc.org/api/general.php").openConnection();
             con.setDoOutput(true);

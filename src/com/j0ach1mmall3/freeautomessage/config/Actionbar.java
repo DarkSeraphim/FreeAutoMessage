@@ -16,17 +16,17 @@ import java.util.List;
  */
 public class Actionbar {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
-    private static Boolean enabled;
-    private static List<ActionbarBroadcaster> broadcasters;
+    private Config customConfig;
+    private FileConfiguration config;
+    private boolean enabled;
+    private List<ActionbarBroadcaster> broadcasters;
     public Actionbar(Main plugin) {
         this.plugin = plugin;
         this.customConfig = new Config("actionbar.yml", plugin);
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
-        if(enabled && !Main.verBiggerThan(1, 8)){
+        if(enabled && !plugin.verBiggerThan(1, 8)){
             if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
@@ -40,7 +40,7 @@ public class Actionbar {
         if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Actionbar config successfully loaded!", ChatColor.GREEN);
     }
 
-    private static List<ActionbarBroadcaster> getBroadcasters() {
+    private List<ActionbarBroadcaster> getBroadcasters() {
         List<ActionbarBroadcaster> broadcasters = new ArrayList<>();
         for(String s : customConfig.getKeys("ActionbarBroadcasters")) {
             broadcasters.add(getBroadcasterByIdentifier(s));
@@ -48,7 +48,7 @@ public class Actionbar {
         return broadcasters;
     }
 
-    private static ActionbarBroadcaster getBroadcasterByIdentifier(String identifier) {
+    private ActionbarBroadcaster getBroadcasterByIdentifier(String identifier) {
         String path = "ActionbarBroadcasters." + identifier + ".";
         return new ActionbarBroadcaster(
                 identifier,

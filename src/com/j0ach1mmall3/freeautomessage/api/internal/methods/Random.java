@@ -14,7 +14,7 @@ public class Random {
 		return rand.nextInt();
 	}
 	
-	public static Boolean getBoolean(){
+	public static boolean getBoolean(){
 		return rand.nextBoolean();
 	}
 	

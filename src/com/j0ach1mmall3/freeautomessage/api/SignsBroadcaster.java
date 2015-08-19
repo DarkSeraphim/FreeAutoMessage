@@ -16,13 +16,13 @@ import java.util.List;
  */
 public class SignsBroadcaster extends Broadcaster {
     private String identifier;
-    private Boolean random;
+    private boolean random;
     private List<String> signs;
     private int interval;
     private List<String> messages;
     private int count = 0;
 
-    public SignsBroadcaster(String identifier, Boolean random, List<String> signs, int interval, List<String> messages) {
+    public SignsBroadcaster(String identifier, boolean random, List<String> signs, int interval, List<String> messages) {
         this.identifier = identifier;
         this.random = random;
         this.signs = signs;
@@ -38,11 +38,11 @@ public class SignsBroadcaster extends Broadcaster {
         this.identifier = identifier;
     }
 
-    public Boolean getRandom() {
+    public boolean getRandom() {
         return random;
     }
 
-    public void setRandom(Boolean random) {
+    public void setRandom(boolean random) {
         this.random = random;
     }
 

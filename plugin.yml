@@ -1,6 +1,6 @@
 name: FreeAutoMessage
 main: com.j0ach1mmall3.freeautomessage.Main
-version: 1.0.1
+version: 1.0.2
 author: j0ach1mmall3
 description: Because nobody should pay for the Bukkit tutorial
 depend: [PlaceholderAPI]

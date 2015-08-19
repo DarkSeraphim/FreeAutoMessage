@@ -10,9 +10,9 @@ import java.lang.reflect.Field;
  * Created by j0ach1mmall3 on 17:20 18/08/2015 using IntelliJ IDEA.
  */
 public class Glow extends Enchantment{
-    private static Enchantment glow;
-    private static String name;
-    private Glow() {
+    private Enchantment glow;
+    private String name;
+    public Glow() {
         super(255);
     }
     @Override
@@ -40,7 +40,7 @@ public class Glow extends Enchantment{
         return 1;
     }
     @SuppressWarnings("deprecation")
-    public static Enchantment getGlow()	{
+    public Enchantment getGlow()	{
         if ( glow != null )
             return glow;
         try	{

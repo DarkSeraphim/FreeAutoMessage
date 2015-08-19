@@ -12,14 +12,14 @@ import java.util.List;
  */
 public class ActionbarBroadcaster extends Broadcaster {
     private String identifier;
-    private Boolean random;
+    private boolean random;
     private List<String> enabledWorlds;
     private int interval;
     private String permission;
     private List<String> messages;
     private int count = 0;
 
-    public ActionbarBroadcaster(String identifier, Boolean random, List<String> enabledWorlds, int interval, String permission, List<String> messages) {
+    public ActionbarBroadcaster(String identifier, boolean random, List<String> enabledWorlds, int interval, String permission, List<String> messages) {
         this.identifier = identifier;
         this.random = random;
         this.enabledWorlds = enabledWorlds;
@@ -36,11 +36,11 @@ public class ActionbarBroadcaster extends Broadcaster {
         this.identifier = identifier;
     }
 
-    public Boolean getRandom() {
+    public boolean getRandom() {
         return random;
     }
 
-    public void setRandom(Boolean random) {
+    public void setRandom(boolean random) {
         this.random = random;
     }
 

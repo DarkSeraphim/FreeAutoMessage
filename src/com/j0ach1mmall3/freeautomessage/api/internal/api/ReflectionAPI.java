@@ -17,7 +17,7 @@ public class ReflectionAPI {
 		return null;
 	}
 	
-	public static Boolean useSpigot(){
+	public static boolean useSpigot(){
 		String path = "org.spigotmc.Metrics";
 		try{
 			Class.forName(path);
@@ -52,7 +52,7 @@ public class ReflectionAPI {
 		return clazz;
 	}
 	
-	public static Object getHandle(Entity entity){
+	private static Object getHandle(Entity entity){
 		HashMap<Class<? extends Entity>, Method> handles = new HashMap<>();
 		try {
 			if (handles.get(entity.getClass()) != null)
@@ -69,7 +69,7 @@ public class ReflectionAPI {
 		}
 	}
 	
-	public static Object getHandle(World world){
+	private static Object getHandle(World world){
 		Class<?> craftWorldClass = getObcClass("CraftWorld");
 		try {
 			return craftWorldClass.getMethod("getHandle", null).invoke(world, null);
