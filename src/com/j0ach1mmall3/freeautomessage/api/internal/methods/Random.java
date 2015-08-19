@@ -18,7 +18,7 @@ public class Random {
 		return rand.nextBoolean();
 	}
 	
-	public static Double getDouble(){
+	public static double getDouble(){
 		return rand.nextDouble();
 	}
 }
