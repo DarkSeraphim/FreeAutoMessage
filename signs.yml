@@ -1,0 +1,28 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+# ####################################################################################################### #
+# CONFIGURATION DOCUMENTATION                                                                             #
+# Enabled: Should Signs broadcasting be enabled?                                                          #
+# Random: Should the order be randomized?                                                                 #
+# Signs: The signs on which this Broadcaster is active.                                                   #
+# This should not be touched unless you know what you're doing.                                           #
+# To add a Sign to this broadcaster, use /fam addsign %Broadcaster% while you are looking at it           #
+# To remove a Sign from this broadcaster, use /fam removesign %Broadcaster%                               #
+# Interval: The interval between each messages                                                            #
+# Permission: The permission a player needs to have to see the messages                                   #
+# Messages: The messages of this Broadcaster (Placeholders and Color codes (& symbol) work here)          #
+# You can add | to start a new line (up to 4 lines)                                                       #
+# ####################################################################################################### #
+Enabled: true
+SignsBroadcasters:
+  ExampleSignsBroadcaster:
+    Random: false
+    Signs:
+    - world/0/0/0
+    Interval: 600
+    Messages:
+    - '&1example message 1'
+    - '&2example message 2|&2example message 2'

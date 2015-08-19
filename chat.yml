@@ -1,0 +1,30 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+# ####################################################################################################### #
+# CONFIGURATION DOCUMENTATION                                                                             #
+# Enabled: Should Chat broadcasting be enabled?                                                           #
+# Json: Should Json Chat formatting be enabled? (Note: requires Minecraft version 1.7!)                   #
+# Random: Should the order be randomized?                                                                 #
+# EnabledWorlds: The worlds in which this Broadcaster will be active                                      #
+# Interval: The interval between each messages                                                            #
+# Permission: The permission a player needs to have to see the messages                                   #
+# Messages: The messages of this Broadcaster (Placeholders and Color codes (& symbol) work here)          #
+# You can use Json formatting in the messages                                                             #
+# Use [text] in front of normal text to ignore json                                                       #
+# You can use the | symbol between text or between json declarations to create a new line                 #
+# ####################################################################################################### #
+Enabled: true
+Json: true
+ChatBroadcasters:
+  ExampleChatBroadcaster:
+    Random: false
+    EnabledWorlds:
+    - world
+    Interval: 600
+    Permission: example.chat.broadcaster
+    Messages:
+    - '[text]&7-------------------|[text]&6This server uses &dFreeAutoMessage&6, a free Auto Messaging plugin that has some very cool features!|{"text":"Check it out here!","color":"gray","clickEvent":{"action":"open_url","value":"https://www.spigotmc.org/resources/free-auto-message.11191/"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"Click to check it out!","color":"dark_purple"}]}}}|[text]&7-------------------'
+    - '[text]&dFreeAutoMessage &6supports a lot of broadcasting methods, including &lActionbar, Boss Bar, Chat, Signs, Subtitle, Title and Tablist Broadcasters&6!|[text]&6And all of that, at the cheap price of &l0$&6!'

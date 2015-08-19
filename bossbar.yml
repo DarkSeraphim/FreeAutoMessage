@@ -1,0 +1,44 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+# ####################################################################################################### #
+# CONFIGURATION DOCUMENTATION                                                                             #
+# Enabled: Should Bossbar broadcasting be enabled? (Note: this requires BossBarAPI!)                      #
+# Random: Should the order be randomized?                                                                 #
+# EnabledWorlds: The worlds in which this Broadcaster will be active                                      #
+# Interval: The interval between each messages                                                            #
+# Permission: The permission a player needs to have to see the messages                                   #
+# Messages: The messages of this Broadcaster (Placeholders and Color codes (& symbol) work here)          #
+# You can add |%percentage here% to make it only display a percentage of the Boss Bar as full             #
+# ####################################################################################################### #
+Enabled: true
+BossbarBroadcasters:
+  ExampleBossbarbarBroadcaster:
+    Random: false
+    EnabledWorlds:
+    - world
+    Interval: 20
+    Permission: example.bossbarbar.broadcaster
+    Messages:
+    - '&6I <3 &dFreeAutoMessage&6!'
+    - '&6I <3 &dFreeAutoMessage&6!|90'
+    - '&6I <3 &dFreeAutoMessage&6!|80'
+    - '&6I <3 &dFreeAutoMessage&6!|70'
+    - '&6I <3 &dFreeAutoMessage&6!|60'
+    - '&6I <3 &dFreeAutoMessage&6!|50'
+    - '&6I <3 &dFreeAutoMessage&6!|40'
+    - '&6I <3 &dFreeAutoMessage&6!|30'
+    - '&6I <3 &dFreeAutoMessage&6!|20'
+    - '&6I <3 &dFreeAutoMessage&6!|10'
+    - '&6I <3 &dFreeAutoMessage&6!|0'
+    - '&6I <3 &dFreeAutoMessage&6!|10'
+    - '&6I <3 &dFreeAutoMessage&6!|20'
+    - '&6I <3 &dFreeAutoMessage&6!|30'
+    - '&6I <3 &dFreeAutoMessage&6!|40'
+    - '&6I <3 &dFreeAutoMessage&6!|50'
+    - '&6I <3 &dFreeAutoMessage&6!|60'
+    - '&6I <3 &dFreeAutoMessage&6!|70'
+    - '&6I <3 &dFreeAutoMessage&6!|80'
+    - '&6I <3 &dFreeAutoMessage&6!|90'

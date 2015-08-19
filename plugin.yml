@@ -1,0 +1,29 @@
+name: FreeAutoMessage
+main: com.j0ach1mmall3.freeautomessage.Main
+version: 1.0.1
+author: j0ach1mmall3
+description: Because nobody should pay for the Bukkit tutorial
+depend: [PlaceholderAPI]
+softdepend: [BossBarAPI]
+commands:
+    FreeAutoMessage:
+        description: Main FreeAutoMessage command
+        usage: /<command> <arguments>
+        aliases: fam
+permissions:
+    fam.*:
+        description: All the FreeAutoMessage permissions
+        default: op
+        children:
+            fam.reload: true
+            fam.addsign: true
+            fam.removesign: true
+    fam.reload:
+        description: Access to /fam reload
+        default: op
+    fam.addsign:
+        description: Access to /fam addsign
+        default: op
+    fam.removesign:
+        description: Access to /fam removesign
+        default: op

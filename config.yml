@@ -1,0 +1,17 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+# ####################################################################################################### #
+# CONFIGURATION DOCUMENTATION                                                                             #
+# UpdateChecker: Should the plugin check for updates on the Spigot page?                                  #
+# LoggingLevel: Console logging level                                                                     #
+# 0 means no logging at all                                                                               #
+# 1 means basic logging                                                                                   #
+# 2 means extensive logging                                                                               #
+# NoPermissionMessage: Message to be displayed when a player doesn't have permission to execute a command #
+# ####################################################################################################### #
+UpdateChecker: true
+LoggingLevel: 2
+NoPermissionMessage: '&4You don''t have permission to do this!'

@@ -1,0 +1,26 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+###########################################################################################################
+# CONFIGURATION DOCUMENTATION                                                                             #
+# Enabled: Should Actionbar broadcasting be enabled? (Note: this requires Minecraft version 1.8!)         #
+# Random: Should the order be randomized?                                                                 #
+# EnabledWorlds: The worlds in which this Broadcaster will be active                                      #
+# Interval: The interval between each messages                                                            #
+# Permission: The permission a player needs to have to see the messages                                   #
+# Messages: The messages of this Broadcaster (Placeholders and Color codes (& symbol) work here)          #
+###########################################################################################################
+Enabled: true
+ActionbarBroadcasters:
+  ExampleActionbarBroadcaster:
+    Random: false
+    EnabledWorlds:
+    - world
+    Interval: 20
+    Permission: example.actionbar.broadcaster
+    Messages:
+    - "&dFreeAutoMessage Actionbar!"
+    - "&67 different methods to broadcast messages!"
+    - "&6All of that, for &lfree&6!"

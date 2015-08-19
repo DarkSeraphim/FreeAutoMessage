@@ -1,0 +1,31 @@
+# ####################################################################################################### #
+# FreeAutoMessage version 1.0.0 configuration                                                             #
+# Any help with this configuration should be requested here:                                              #
+# https://www.spigotmc.org/resources/free-auto-message.11191/                                             #
+# (c) 2015 j0ach1mmall3 - All rights reserved                                                             #
+###########################################################################################################
+# CONFIGURATION DOCUMENTATION                                                                             #
+# Enabled: Should Subtitle broadcasting be enabled? (Note: this requires Minecraft version 1.8!)          #
+# Random: Should the order be randomized?                                                                 #
+# EnabledWorlds: The worlds in which this Broadcaster will be active                                      #
+# Interval: The interval between each messages                                                            #
+# Permission: The permission a player needs to have to see the messages                                   #
+# FadeIn: The time in ticks (1 second = 20 ticks) for the 'fade in'                                       #
+# Stay: The time in ticks (1 second = 20 ticks) for the message to stay                                   #
+# The time in ticks (1 second = 20 ticks) for the 'fade out'                                              #
+# Messages: The messages of this Broadcaster (Placeholders and Color codes (& symbol) work here)          #
+###########################################################################################################
+Enabled: true
+SubtitleBroadcasters:
+  ExampleSubtitleBroadcaster:
+    Random: false
+    EnabledWorlds:
+    - world
+    Interval: 600
+    Permission: example.subtitle.broadcaster
+    FadeIn: 20
+    Stay: 60
+    FadeOut: 20
+    Messages:
+    - '&1example message 1'
+    - '&2example message 2'
