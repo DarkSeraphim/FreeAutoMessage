@@ -45,7 +45,7 @@ public class JsonText {
         }
         try {
             Constructor packetConstructor = ReflectionAPI.getNmsClass("PacketPlayOutChat").getConstructor(ReflectionAPI.getNmsClass("IChatBaseComponent"), byte.class);
-            Object baseComponent = getSerializerClass().getMethod("a", String.class).invoke(null, json);
+            Object baseComponent = getSerializerClass().getMethod("a", String.class).invoke(null, this.json);
             Object packet = packetConstructor.newInstance(baseComponent, (byte) 0);
             ReflectionAPI.sendPacket(player, packet);
         } catch(Exception e){
@@ -61,7 +61,7 @@ public class JsonText {
         }
     }
 
-    public boolean verBiggerThan(int depth, int version) {
+    private boolean verBiggerThan(int depth, int version) {
         return Parsing.parseString(Bukkit.getBukkitVersion().split("\\-")[0].split("\\.")[depth]) >= version;
     }
 }

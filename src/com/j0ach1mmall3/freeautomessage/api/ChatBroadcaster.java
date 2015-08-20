@@ -98,7 +98,7 @@ public class ChatBroadcaster extends Broadcaster {
     private void sendMessage(Player p, String message) {
         String[] parts = message.split("\\|");
         for(String s : parts) {
-            if(json) {
+            if(this.json) {
                 new JsonText(p, s).send();
             } else {
                 p.sendMessage(PlaceholderAPI.setPlaceholders(p, s));

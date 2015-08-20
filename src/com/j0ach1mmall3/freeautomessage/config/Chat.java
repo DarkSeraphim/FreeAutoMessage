@@ -29,7 +29,7 @@ public class Chat {
         enabled = config.getBoolean("Enabled");
         json = config.getBoolean("Json");
         com.j0ach1mmall3.freeautomessage.config.Config pluginConfig = new com.j0ach1mmall3.freeautomessage.config.Config(plugin);
-        if(enabled && !plugin.verBiggerThan(1, 7)){
+        if(json && !plugin.verBiggerThan(1, 7)){
             if(pluginConfig.getLoggingLevel() >= 1) General.sendColoredMessage(plugin, "It seems that Json Chat formatting is enabled in the config, however the server is running 1.6 or lower! Fixing that for you :)", ChatColor.RED);
             json = false;
         }
@@ -60,7 +60,7 @@ public class Chat {
                 config.getInt(path + "Interval"),
                 config.getString(path + "Permission"),
                 config.getStringList(path + "Messages"),
-                json
+                this.json
         );
     }
 }

@@ -33,6 +33,7 @@ public class Config {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public void reloadConfig() {
         if(plugin.getResource(name) != null){
             FileConfiguration config = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), name));
