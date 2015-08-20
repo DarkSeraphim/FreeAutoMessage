@@ -20,8 +20,10 @@ import java.util.Set;
  */
 public class Commands implements CommandExecutor {
     private Main plugin;
+    private Config config;
     public Commands(Main plugin) {
         this.plugin = plugin;
+        this.config = new Config(plugin);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -32,7 +34,7 @@ public class Commands implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("reload")) {
                 if (!sender.hasPermission("fam.reload")) {
-                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), Config.noPermissionMessage));
+                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), config.getNoPermissionMessage()));
                     return true;
                 }
                 Bukkit.getScheduler().cancelTasks(plugin);
@@ -49,7 +51,7 @@ public class Commands implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("addsign")) {
                 if (!sender.hasPermission("fam.addsign")) {
-                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), Config.noPermissionMessage));
+                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), config.getNoPermissionMessage()));
                     return true;
                 }
                 if(!(sender instanceof Player)) {
@@ -82,7 +84,7 @@ public class Commands implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("removesign")) {
                 if (!sender.hasPermission("fam.removesign")) {
-                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), Config.noPermissionMessage));
+                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), config.getNoPermissionMessage()));
                     return true;
                 }
                 if(!(sender instanceof Player)) {

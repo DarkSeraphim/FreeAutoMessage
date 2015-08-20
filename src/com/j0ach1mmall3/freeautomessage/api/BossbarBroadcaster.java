@@ -103,8 +103,4 @@ public class BossbarBroadcaster extends Broadcaster {
             BossBarAPI.setMessage(p, PlaceholderAPI.setPlaceholders(p, message));
         }
     }
-
-    public static void removeBar(Player p) {
-        BossBarAPI.removeBar(p);
-    }
 }

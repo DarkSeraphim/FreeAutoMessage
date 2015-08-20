@@ -2,7 +2,6 @@ package com.j0ach1mmall3.freeautomessage.api;
 
 import com.j0ach1mmall3.freeautomessage.api.internal.methods.Random;
 import com.j0ach1mmall3.freeautomessage.api.internal.objects.JsonText;
-import com.j0ach1mmall3.freeautomessage.config.Chat;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -19,15 +18,17 @@ public class ChatBroadcaster extends Broadcaster {
     private int interval;
     private String permission;
     private List<String> messages;
+    private boolean json;
     private int count = 0;
 
-    public ChatBroadcaster(String identifier, boolean random, List<String> enabledWorlds, int interval, String permission, List<String> messages) {
+    public ChatBroadcaster(String identifier, boolean random, List<String> enabledWorlds, int interval, String permission, List<String> messages, boolean json) {
         this.identifier = identifier;
         this.random = random;
         this.enabledWorlds = enabledWorlds;
         this.interval = interval;
         this.permission = permission;
         this.messages = messages;
+        this.json = json;
     }
 
     public String getIdentifier() {
@@ -97,7 +98,7 @@ public class ChatBroadcaster extends Broadcaster {
     private void sendMessage(Player p, String message) {
         String[] parts = message.split("\\|");
         for(String s : parts) {
-            if(Chat.json) {
+            if(json) {
                 new JsonText(p, s).send();
             } else {
                 p.sendMessage(PlaceholderAPI.setPlaceholders(p, s));

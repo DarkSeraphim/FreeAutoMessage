@@ -20,7 +20,7 @@ public class Bossbar {
     private Main plugin;
     private Config customConfig;
     private FileConfiguration config;
-    public boolean enabled;
+    private boolean enabled;
     private List<BossbarBroadcaster> broadcasters;
     public Bossbar(Main plugin) {
         this.plugin = plugin;
@@ -28,21 +28,22 @@ public class Bossbar {
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
+        com.j0ach1mmall3.freeautomessage.config.Config pluginConfig = new com.j0ach1mmall3.freeautomessage.config.Config(plugin);
         if(enabled && !plugin.getBossBarAPI()){
-            if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
+            if(pluginConfig.getLoggingLevel() >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
         broadcasters = getBroadcasters();
         if(enabled) {
             for(Player p : Bukkit.getOnlinePlayers()) {
-                BossbarBroadcaster.removeBar(p);
+                org.inventivetalent.bossbar.BossBarAPI.removeBar(p);
             }
             for(BossbarBroadcaster broadcaster : broadcasters) {
                 new BroadcastScheduler(broadcaster).runTaskTimer(plugin, 0, broadcaster.getInterval());
             }
-            if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Started broadcasting Bossbar messages!", ChatColor.GREEN);
+            if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Started broadcasting Bossbar messages!", ChatColor.GREEN);
         }
-        if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Bossbar config successfully loaded!", ChatColor.GREEN);
+        if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Bossbar config successfully loaded!", ChatColor.GREEN);
     }
 
     private List<BossbarBroadcaster> getBroadcasters() {
@@ -63,5 +64,9 @@ public class Bossbar {
                 config.getString(path + "Permission"),
                 config.getStringList(path + "Messages")
         );
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 }

@@ -27,13 +27,14 @@ public class Signs {
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
         broadcasters = getBroadcasters();
+        com.j0ach1mmall3.freeautomessage.config.Config pluginConfig = new com.j0ach1mmall3.freeautomessage.config.Config(plugin);
         if(enabled) {
             for(SignsBroadcaster broadcaster : broadcasters) {
                 new BroadcastScheduler(broadcaster).runTaskTimer(plugin, 0, broadcaster.getInterval());
             }
-            if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Started broadcasting Signs messages!", ChatColor.GREEN);
+            if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Started broadcasting Signs messages!", ChatColor.GREEN);
         }
-        if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Signs config successfully loaded!", ChatColor.GREEN);
+        if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Signs config successfully loaded!", ChatColor.GREEN);
     }
 
     private List<SignsBroadcaster> getBroadcasters() {

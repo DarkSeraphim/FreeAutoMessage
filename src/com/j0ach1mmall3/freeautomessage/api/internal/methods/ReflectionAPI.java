@@ -1,4 +1,4 @@
-package com.j0ach1mmall3.freeautomessage.api.internal.api;
+package com.j0ach1mmall3.freeautomessage.api.internal.methods;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;

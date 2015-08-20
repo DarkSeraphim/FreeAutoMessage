@@ -26,8 +26,9 @@ public class Actionbar {
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
         enabled = config.getBoolean("Enabled");
+        com.j0ach1mmall3.freeautomessage.config.Config pluginConfig = new com.j0ach1mmall3.freeautomessage.config.Config(plugin);
         if(enabled && !plugin.verBiggerThan(1, 8)){
-            if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
+            if(pluginConfig.getLoggingLevel() >= 1) General.sendColoredMessage(plugin, "It seems that Actionbar Broadcasting is enabled in the config, however the server is running 1.7 or lower! Fixing that for you :)", ChatColor.RED);
             enabled = false;
         }
         broadcasters = getBroadcasters();
@@ -35,9 +36,9 @@ public class Actionbar {
             for(ActionbarBroadcaster broadcaster : broadcasters) {
                 new BroadcastScheduler(broadcaster).runTaskTimer(plugin, 0, broadcaster.getInterval());
             }
-            if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Started broadcasting Actionbar messages!", ChatColor.GREEN);
+            if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Started broadcasting Actionbar messages!", ChatColor.GREEN);
         }
-        if(com.j0ach1mmall3.freeautomessage.config.Config.loggingLevel >= 2) General.sendColoredMessage(plugin, "Actionbar config successfully loaded!", ChatColor.GREEN);
+        if(pluginConfig.getLoggingLevel() >= 2) General.sendColoredMessage(plugin, "Actionbar config successfully loaded!", ChatColor.GREEN);
     }
 
     private List<ActionbarBroadcaster> getBroadcasters() {

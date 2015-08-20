@@ -1,6 +1,6 @@
 package com.j0ach1mmall3.freeautomessage.api.internal.objects;
 
-import com.j0ach1mmall3.freeautomessage.api.internal.api.ReflectionAPI;
+import com.j0ach1mmall3.freeautomessage.api.internal.methods.ReflectionAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
