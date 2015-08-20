@@ -6,7 +6,6 @@ import com.j0ach1mmall3.freeautomessage.api.SignsBroadcaster;
 import com.j0ach1mmall3.freeautomessage.api.internal.methods.General;
 import com.j0ach1mmall3.freeautomessage.api.internal.storage.yaml.Config;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.ArrayList;
@@ -17,8 +16,8 @@ import java.util.List;
  */
 public class Signs {
     private Main plugin;
-    private static Config customConfig;
-    private static FileConfiguration config;
+    private Config customConfig;
+    private FileConfiguration config;
     private boolean enabled;
     private List<SignsBroadcaster> broadcasters;
     public Signs(Main plugin) {
@@ -54,35 +53,5 @@ public class Signs {
                 config.getInt(path + "Interval"),
                 config.getStringList(path + "Messages")
         );
-    }
-
-    public static boolean isSignsBroadcaster(String identifier) {
-        return customConfig.getKeys("SignsBroadcasters").contains(identifier);
-    }
-
-    public static void addSign(String identifier, Location l) {
-        String path = "SignsBroadcasters." + identifier + ".";
-        List<String> signs = config.getStringList(path + "Signs");
-        signs.add(serializeLocation(l));
-        config.set("SignsBroadcasters." + identifier + ".Signs", signs);
-        customConfig.saveConfig(config);
-    }
-
-    public static void removeSign(String identifier, Location l) {
-        String path = "SignsBroadcasters." + identifier + ".";
-        List<String> signs = config.getStringList(path + "Signs");
-        signs.remove(serializeLocation(l));
-        config.set("SignsBroadcasters." + identifier + ".Signs", signs);
-        customConfig.saveConfig(config);
-    }
-
-    public static boolean hasSign(String identifier, Location l) {
-        String path = "SignsBroadcasters." + identifier + ".";
-        List<String> signs = config.getStringList(path + "Signs");
-        return signs.contains(serializeLocation(l));
-    }
-
-    private static String serializeLocation(Location l) {
-        return l.getWorld().getName() + "/" + String.valueOf(l.getBlockX()) + "/" + String.valueOf(l.getBlockY()) + "/" + String.valueOf(l.getBlockZ());
     }
 }

@@ -66,15 +66,16 @@ public class Commands implements CommandExecutor {
                     p.sendMessage(ChatColor.RED + "You need to specify a Broadcaster you want to add this Sign to!");
                     return true;
                 }
-                if(!Signs.isSignsBroadcaster(args[1])) {
+                com.j0ach1mmall3.freeautomessage.api.Sign sign = new com.j0ach1mmall3.freeautomessage.api.Sign(plugin, args[1], b.getLocation());
+                if(!sign.isSignsBroadcaster()) {
                     p.sendMessage(ChatColor.RED + args[1] + " isn't a valid Signs Broadcaster!");
                     return true;
                 }
-                if(Signs.hasSign(args[1], b.getLocation())) {
+                if(sign.exists()) {
                     p.sendMessage(ChatColor.RED + args[1] + " already has this Sign!");
                     return true;
                 }
-                Signs.addSign(args[1], b.getLocation());
+                sign.add();
                 p.sendMessage(ChatColor.GREEN + "Successfully added Sign to " + args[1]);
                 p.sendMessage(ChatColor.GOLD + "Use /fam reload to apply the changes");
                 return true;
@@ -98,15 +99,16 @@ public class Commands implements CommandExecutor {
                     p.sendMessage(ChatColor.RED + "You need to specify a Broadcaster you want to remove this Sign from!");
                     return true;
                 }
-                if(!Signs.isSignsBroadcaster(args[1])) {
+                com.j0ach1mmall3.freeautomessage.api.Sign sign = new com.j0ach1mmall3.freeautomessage.api.Sign(plugin, args[1], b.getLocation());
+                if(!sign.isSignsBroadcaster()) {
                     p.sendMessage(ChatColor.RED + args[1] + " isn't a valid Signs Broadcaster!");
                     return true;
                 }
-                if(!Signs.hasSign(args[1], b.getLocation())) {
+                if(!sign.exists()) {
                     p.sendMessage(ChatColor.RED + args[1] + " doesn't have this Sign!");
                     return true;
                 }
-                Signs.removeSign(args[1], b.getLocation());
+                sign.remove();
                 p.sendMessage(ChatColor.GREEN + "Successfully removed Sign from " + args[1]);
                 p.sendMessage(ChatColor.GOLD + "Use /fam reload to apply the changes");
                 return true;
