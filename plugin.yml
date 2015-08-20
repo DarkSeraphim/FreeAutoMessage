@@ -27,3 +27,6 @@ permissions:
     fam.removesign:
         description: Access to /fam removesign
         default: op
+    fam.listsigns:
+        description: Access to /fam listsigns
+        default: op

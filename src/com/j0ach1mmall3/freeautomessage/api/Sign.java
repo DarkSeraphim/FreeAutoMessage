@@ -14,24 +14,24 @@ public class Sign {
     private Main plugin;
     private Config customConfig;
     private FileConfiguration config;
-    private String broadcasterIdentifier;
+    private String brdcasterIdentifier;
     private Location location;
 
-    public Sign(Main plugin, String broadcasterIdentifier, Location location) {
+    public Sign(Main plugin, String brdcasterIdentifier, Location location) {
         this.plugin = plugin;
         this.customConfig = new Config("signs.yml", plugin);
         customConfig.saveDefaultConfig();
         this.config = customConfig.getConfig();
-        this.broadcasterIdentifier = broadcasterIdentifier;
+        this.brdcasterIdentifier = brdcasterIdentifier;
         this.location = location;
     }
 
     public String getBroadcasterIdentifier() {
-        return broadcasterIdentifier;
+        return brdcasterIdentifier;
     }
 
-    public void setBroadcasterIdentifier(String broadcasterIdentifier) {
-        this.broadcasterIdentifier = broadcasterIdentifier;
+    public void setBroadcasterIdentifier(String brdcasterIdentifier) {
+        this.brdcasterIdentifier = brdcasterIdentifier;
     }
 
     public Location getLocation() {
@@ -43,29 +43,34 @@ public class Sign {
     }
 
     public void add() {
-        String path = "SignsBroadcasters." + broadcasterIdentifier + ".";
+        String path = "SignsBroadcasters." + brdcasterIdentifier + ".";
         List<String> signs = config.getStringList(path + "Signs");
         signs.add(serializeLocation(location));
-        config.set("SignsBroadcasters." + broadcasterIdentifier + ".Signs", signs);
+        config.set("SignsBroadcasters." + brdcasterIdentifier + ".Signs", signs);
         customConfig.saveConfig(config);
     }
 
     public void remove() {
-        String path = "SignsBroadcasters." + broadcasterIdentifier + ".";
+        String path = "SignsBroadcasters." + brdcasterIdentifier + ".";
         List<String> signs = config.getStringList(path + "Signs");
         signs.remove(serializeLocation(location));
-        config.set("SignsBroadcasters." + broadcasterIdentifier + ".Signs", signs);
+        config.set("SignsBroadcasters." + brdcasterIdentifier + ".Signs", signs);
         customConfig.saveConfig(config);
     }
 
+    public List<String> list() {
+        String path = "SignsBroadcasters." + brdcasterIdentifier + ".";
+        return config.getStringList(path + "Signs");
+    }
+
     public boolean exists() {
-        String path = "SignsBroadcasters." + broadcasterIdentifier + ".";
+        String path = "SignsBroadcasters." + brdcasterIdentifier + ".";
         List<String> signs = config.getStringList(path + "Signs");
         return signs.contains(serializeLocation(location));
     }
 
     public boolean isSignsBroadcaster() {
-        return customConfig.getKeys("SignsBroadcasters").contains(broadcasterIdentifier);
+        return customConfig.getKeys("SignsBroadcasters").contains(brdcasterIdentifier);
     }
 
     private String serializeLocation(Location l) {

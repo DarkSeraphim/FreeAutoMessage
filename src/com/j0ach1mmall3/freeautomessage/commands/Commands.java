@@ -29,7 +29,7 @@ public class Commands implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("FreeAutoMessage")) {
             if (args.length < 1) {
-                sender.sendMessage(ChatColor.RED + "Usage: /fam reload, /fam addsign, /fam removesign");
+                sender.sendMessage(ChatColor.RED + "Usage: /fam reload, /fam addsign, /fam removesign, /fam listsigns");
                 return true;
             }
             if (args[0].equalsIgnoreCase("reload")) {
@@ -115,7 +115,28 @@ public class Commands implements CommandExecutor {
                 p.sendMessage(ChatColor.GOLD + "Use /fam reload to apply the changes");
                 return true;
             }
-            sender.sendMessage(ChatColor.RED + "Usage: /fam reload, /fam addsign, /fam removesign");
+            if (args[0].equalsIgnoreCase("listsigns")) {
+                if (!sender.hasPermission("fam.listsigns")) {
+                    if(sender instanceof Player) sender.sendMessage(PlaceholderAPI.setPlaceholders(((Player) sender), config.getNoPermissionMessage()));
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(ChatColor.RED + "You need to specify a Broadcaster you want to list the Signs from!");
+                    return true;
+                }
+                com.j0ach1mmall3.freeautomessage.api.Sign sign = new com.j0ach1mmall3.freeautomessage.api.Sign(plugin, args[1], null);
+                if(!sign.isSignsBroadcaster()) {
+                    sender.sendMessage(ChatColor.RED + args[1] + " isn't a valid Signs Broadcaster!");
+                    return true;
+                }
+                sender.sendMessage(ChatColor.GREEN + args[1] + " Signs:");
+                for(String s : sign.list()) {
+                    String[] parts = s.split("/");
+                    sender.sendMessage(ChatColor.GOLD + "- World: " + parts[0] + " X: " + parts[1] + " Y: " + parts[2] + " Z: " + parts[3]);
+                }
+                return true;
+            }
+            sender.sendMessage(ChatColor.RED + "Usage: /fam reload, /fam addsign, /fam removesign, /fam listsigns");
             return true;
         }
         return false;
